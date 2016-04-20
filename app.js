@@ -5,6 +5,8 @@ const app = express();
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,10 +31,29 @@ app.post('/csv', (request, response) => {
   response.render('csv', { "csv": calculate(csv), title:"Resultado" });
 });
 
-// app.get('/pruebas', (request, response) => {
-//   response.render('tests', { title: "Tests"});
-// });
+var db = mongoose.connect('mongodb://127.0.0.1:27017/csv_db');
 
-app.listen(app.get('port'), () => {
-    console.log(`Node app is running at localhost: ${app.get('port')}` );
+var csvSchema = new mongoose.Schema({
+  name:  String,
+  content: String
 });
+
+
+var Csv = db.model('Csv', csvSchema);
+console.log("Created model");
+
+var csv1 = new Csv({"name":"input", "content":"1, 2 \n 3, 4"});
+
+let p1 = csv1.save(function (err) {
+  if (err) return handleError(err);
+     console.log("Guardado");
+});
+
+Promise.all([p1]).then( (value) => {
+    console.log(util.inspect(value, {depth: null}));
+    mongoose.connection.close();
+  });
+
+// app.listen(app.get('port'), () => {
+//     console.log(`Node app is running at localhost: ${app.get('port')}` );
+// });
