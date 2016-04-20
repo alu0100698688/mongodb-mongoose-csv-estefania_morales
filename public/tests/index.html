@@ -1,0 +1,26 @@
+<html>
+<head>
+
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mocha.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  </head>
+
+<body>
+  <div id="mocha"></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+  <script src="mocha.js"></script>
+  <script src="chai.js"></script>
+  <script src="blanket.js"
+        data-cover-adapter="mocha-blanket.js" data-cover-flags="debug"></script>
+        <script src="../js/test-csv.js" data-cover></script>
+  <script>mocha.setup('bdd');</script>
+  <script src="prueba.js"></script>
+  <script>mocha.run();</script>
+</body>
+</html>

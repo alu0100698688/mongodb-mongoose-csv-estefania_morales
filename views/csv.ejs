@@ -1,0 +1,19 @@
+
+<head>
+  <link href="css/myGlobal.css" rel="stylesheet" type="text/css" id="prueba">
+</head>
+Resultado:
+<br>
+<table id="result" class="center">
+  <% for (var item in csv){%>
+    <tr class="<%= csv[item].type %>">
+
+      <% for (var cell in csv[item].items){ %>
+        <td><%= csv[item].items[cell] %></td>
+      <% }; %>
+    </tr>
+  <% }; %>
+</table>
+
+<br>
+<a href="/">Try again.</a>
