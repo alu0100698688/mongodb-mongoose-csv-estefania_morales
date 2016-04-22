@@ -1,5 +1,7 @@
 # Práctica 9: CSV usando MongoDB
 
+[![Build Status](https://travis-ci.org/alu0100698688/mongodb-mongoose-csv-estefania_morales.svg?branch=master)](https://travis-ci.org/alu0100698688/mongodb-mongoose-csv-estefania_morales)
+
 ## A los requisitos de la práctica CSV usando Ajax anterior, se le añaden los siguientes:
 * Un botón guardar. Cuando se hace click en dicho botón se guarda la entrada actual en una base de datos MongoDB.
   * El contenido de la entrada actual se guarda con un nombre que se solicita previamente al usuario.
