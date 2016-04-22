@@ -25,9 +25,10 @@
           <th>
             <div class="example">
               Click para cargar ejemplos:
-              <button class ="example" type="button" id="in1" value="input">input</button>
-              <button class ="example" type="button" id="in2" value="input2">input2</button>
-              <button class ="example" type="button" id="in3" value="input3">input3</button>
+              <button class ="example" type="button" id="in1"></button>
+              <button class ="example" type="button" id="in2"></button>
+              <button class ="example" type="button" id="in3"></button>
+              <button class ="example" type="button" id="in4"></button>
             </div>
           </th>
         </tr>
@@ -35,6 +36,13 @@
           <th>
               Cargar archivo:
               <input type="file" class="inputfile" />
+          </th>
+        </tr>
+        <tr>
+          <th>
+              Guardar una entrada:
+              <input type="text" id="nameEnt" pattern="^[a-zA-Z_]\w*\.csv$">
+              <button type= "button" id="save">Guardar</button>
           </th>
         </tr>
       </table>

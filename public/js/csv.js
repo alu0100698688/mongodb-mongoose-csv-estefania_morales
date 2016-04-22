@@ -67,13 +67,43 @@ $(document).ready(() => {
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
     }
-
-
-   /* botones para rellenar el textarea */
-   $('.example').click(function(){
-     dump('../ejemplos/'+($(this).val() )+ '.txt');
-   })
-
+   
+   
+   //Rellenar textarea con el contenido de la entrada de la db
+   $('button.example').each( (_,but) => {
+        $(but).click( () => { 
+                $.get("/findName", {
+                        name: $(but).text()
+                    },
+                    (entrada) => {
+                        $("#original").val(entrada[0].content);
+                    });
+            });
+       
+    });
+    
+    
+    //Buscando entradas y añadiendo nombre a los button
+    $.get("/find", {}, (entradas) => {
+            for (var i = 0; i < 4; i++) {
+                if (entradas[i]) {
+                    $('button.example').get(i).className = "example";
+                    $('button.example').get(i).textContent = entradas[i].name;
+                }
+            }
+    });
+        
+    //Guardando entrada nueva al pulsar botón guardar
+    $("#save").click(() => {
+          if (window.localStorage) localStorage.original = original.value;
+          alert("Soy el nombre "+($("#nameEnt").val())+" y yo original "+($("#original").val()));
+          $.get("/mongo/", {
+            name: $("#nameEnt").val(),
+            content: $("#original").val()
+          });
+    });
+    
+    
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];
     let dropZone = $('.drop_zone')[0];
